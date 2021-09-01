@@ -1,55 +1,41 @@
 /** @format */
 
-/* Algoritmo con desafios 1 y 2 de la clase: */
-
-const BasicAlgorithm = () => {
-	let firstName = prompt('Ingresa tu Nombre: (No pongas "Lionel")')
-	let lastName = prompt('Ingresa tu Apellido: (No pongas "Messi")')
-	let firstNumber = prompt('Ingresa un Número')
-	let lastNumber = prompt('Ingresa otro Número :)')
-
-	if (!firstName) {
-		alert('No ingresaste tu Nombre, intenta de nuevo')
-		return
-	} else if (firstName.toLowerCase() === 'lionel') {
-		alert('No eres Lionel Messi, impostor!')
-		return
+CounterSimple = (e) => {
+	for (let i = 1; i <= e; i++) {
+		console.log(`El contador recorre con el numero: ${i}`)
 	}
-
-	if (!lastName) {
-		alert('No ingresaste tu Apellido, intenta de nuevo')
-		return
-	} else if (lastName.toLowerCase() === 'messi') {
-		alert('No eres Lionel Messi, impostor!')
-		return
-	}
-
-	firstNumber = parseFloat(firstNumber)
-	lastNumber = parseFloat(lastNumber)
-
-	if (!firstNumber) {
-		alert('No ingresaste el primer número o el valor ingresado no es un número, intenta de nuevo')
-		return
-	}
-
-	if (!lastNumber) {
-		alert(
-			'No ingresaste el segundo número o el valor ingresado no es un número, intenta de nuevo'
-		)
-		return
-	}
-
-	const sum = firstNumber + lastNumber
-	const multiply = firstNumber * lastNumber
-	const divide = firstNumber / lastNumber
-
-	const completeName = 'Hola, tu Nombre Completo es: ' + firstName + ' ' + lastName
-
-	console.log(completeName)
-	alert(completeName)
-	alert('La suma da un total de: ' + sum)
-	alert('La multiplicación da un total de: ' + multiply)
-	alert('La división da un total de: ' + divide)
 }
 
-BasicAlgorithm()
+CounterText = (e, n) => {
+	let output = 0
+	for (let i = 1; i <= e; i++) {
+		output = output + n
+		console.log(`El contador recorre con el numero de 5 en 5: ${output}`)
+	}
+}
+
+const CiclesAlgorithm = async () => {
+	let number
+
+	number = prompt('Ingresa un Número:')
+
+	while (number === null || number == '' || isNaN(number) || number <= 0) {
+		number = prompt('Ingresa un Número:')
+	}
+
+	parseInt(number)
+	if (number) {
+		if (number > 1 && number <= 100) {
+			console.log('Contador sencillo:')
+			CounterSimple(number)
+			console.log('Contador de 5 en 5:')
+			CounterText(number, 5)
+		} else if (number > 100) {
+			alert('Mucho computo intenta con un numero menor...')
+		} else {
+			alert('No puede hacerse un ciclo con 1 :)')
+		}
+	}
+}
+
+CiclesAlgorithm()
