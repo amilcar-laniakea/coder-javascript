@@ -3,3 +3,41 @@
 .list-link {
 	display: block;
 }
+
+.store-navbar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	background-color: #fcfcfc;
+	box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%),
+		0 1px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.navbar-quantity-title {
+	padding: 0 10px;
+}
+
+.spacer-navbar {
+	flex-grow: 1 !important;
+}
+
+.product-list-main-container {
+	width: 100%;
+	max-width: 1180px;
+	padding: 10px;
+	margin: auto;
+}
+
+#productExampleList ul,
+#cart ul {
+	padding: 0;
+	list-style-type: none;
+}
+
+.product-list-example {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 10px;
+	margin: 10px;
+}

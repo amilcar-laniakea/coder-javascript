@@ -55,14 +55,24 @@ class Product {
 	}
 }
 
-const CartQuantity = (cart) => {
-	let cartQuantityProduct
-	if (e) {
-		cartQuantityProduct = cart.reduce((acc, itemCart) => acc + itemCart.quantity, 0)
+const FormatPrice = (cart) => {
+	if (cart) {
+		return cart.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 	} else {
-		cartQuantityProduct = 0
+		return 0
 	}
-	return cartQuantityProduct
+}
+
+const CartQuantity = (cart) => {
+	if (cart) {
+		return cart.reduce((acc, itemCart) => acc + itemCart.quantity, 0)
+	} else {
+		return 0
+	}
+}
+
+const CartTotal = (cart) => {
+	return cart.reduce((acc, cartItem) => acc + parseFloat(cartItem.price) * cartItem.quantity, 0)
 }
 
 const AddToCart = (e) => {
@@ -106,8 +116,8 @@ const ProductList = (item) => {
 											<h4>Nombre: <span class='product-name'>${e.name}</span></h4>
 											<h5>Categoria: <span class='product-category'>${e.category}</span></h5>
 											<h5>Stock: <span class='product-stock'>${e.stock}</span></h5>
-											<h5>Precio: <span class='product-price'>${e.price}</span></h5>
-                      <button class='cart-button-action'>Agregar al Carrito(Localstorage)</button>
+											<h5>Precio: $<span class='product-price'>${e.price}</span></h5>
+                      <button class='cart-button-action btn btn-primary'>Agregar al Carrito(Localstorage)</button>
                     </div>
                    `
 		list.appendChild(li)
@@ -120,7 +130,7 @@ const ProductList = (item) => {
 }
 
 const ProductSortAsc = () => {
-	document.querySelector('#order_asc').addEventListener('click', () => {
+	document.querySelector('#orderAsc').addEventListener('click', () => {
 		const array = [...Data]
 		const Asc = (a, b) => {
 			if (a.price < b.price) {
@@ -138,7 +148,7 @@ const ProductSortAsc = () => {
 }
 
 const ProductSortDesc = () => {
-	document.querySelector('#order_desc').addEventListener('click', () => {
+	document.querySelector('#orderDesc').addEventListener('click', () => {
 		const array = [...Data]
 		const Asc = (a, b) => {
 			if (a.price > b.price) {
@@ -153,6 +163,28 @@ const ProductSortDesc = () => {
 		document.getElementById('productExampleList').innerHTML = ''
 		ProductList(pharmacySorted)
 	})
+}
+
+const CartModal = () => {
+	const cart = JSON.parse(localStorage.getItem('cart'))
+	let list = document.createElement('ul')
+	cart.forEach((e) => {
+		let li = document.createElement('li')
+		li.innerHTML = `<div class='product-list-example'>
+                      <h4>Id: <span class='product-id'>${e.id}</span></h4>
+											<h4>Nombre: <span class='product-name'>${e.name}</span></h4>
+											<h5>Categoria: <span class='product-category'>${e.category}</span></h5>
+											<h5>Stock: <span class='product-stock'>${e.stock}</span></h5>
+											<h5>Cantidad: <span class='product-stock'>${e.quantity}</span></h5>
+											<h5>Precio: <span class='product-price'>$${FormatPrice(e.price)}</span></h5>
+                    </div>
+                   `
+		list.appendChild(li)
+	})
+	document.getElementById('cart').appendChild(list)
+
+	document.getElementById('cartListQuantity').innerHTML = CartQuantity(cart)
+	document.getElementById('cartListTotal').innerHTML = CartTotal(cart)
 }
 
 const DomLoaded = async () => {
