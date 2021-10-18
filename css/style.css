@@ -41,3 +41,45 @@
 	padding: 10px;
 	margin: 10px;
 }
+
+#hpOutput {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+.api-global-container {
+	width: 100%;
+	max-width: 25%;
+}
+
+.api-main-container {
+	margin: 5px;
+	text-align: center;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 20px;
+	cursor: pointer;
+	background-color: #fbfbfb;
+	filter: grayscale();
+	transition: 0.3s ease;
+}
+
+.api-main-container:hover {
+	filter: none;
+	transition: 0.3s ease;
+}
+
+.api-image-container {
+	width: 100%;
+	overflow: hidden;
+	max-width: 295px;
+	height: 295px;
+	margin: auto;
+	border-radius: 100%;
+}
+
+.api-image {
+	position: relative;
+	width: 100%;
+}
