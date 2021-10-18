@@ -1,0 +1,110 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="./css/style.css" />
+		<title>Desafio 11, tercera entrega del Proyecto Final</title>
+	</head>
+	<body>
+		<div class="store-navbar">
+			<a href="index.html">Volver</a>
+			<h2 class="navbar-quantity-title">
+				Cantidad de Productos: <span id="cartQuantity"></span>
+			</h2>
+			<div class="spacer-navbar"></div>
+			<button
+				type="button"
+				class="btn btn-primary"
+				data-toggle="modal"
+				data-target="#cartModal"
+				onclick="CartModal()"
+			>
+				Bolsa de Compras
+			</button>
+		</div>
+		<div class="product-list-main-container">
+			<h3>Ordernar por:</h3>
+			<button id="orderAsc" class="btn btn-primary">Ordenar por Precio(Descendente)</button>
+			<button id="orderDesc" class="btn btn-primary">Ordenar por Precio(Ascendente)</button>
+			<br />
+			<br />
+			<h3>Lista de Productos:</h3>
+			<div id="productExampleList"></div>
+		</div>
+
+		<!-- Modal Cart -->
+		<div
+			class="modal fade"
+			id="cartModal"
+			tabindex="-1"
+			role="dialog"
+			aria-labelledby="cartModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="cartModalLabel">Bolsa de Compras:</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div id="cart"></div>
+					<h3>Total de Productos: <span id="cartListQuantity"></span></h3>
+					<h3>Precio Total: $<span id="cartListTotal"></span></h3>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal Stock -->
+		<div
+			class="modal fade"
+			id="stockModal"
+			tabindex="-1"
+			role="dialog"
+			aria-labelledby="stockModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="stockModalLabel">Alerta!</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">No hay mas Stock disponible de este producto!</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">
+							Aceptar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script
+			src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+		<script src="./js/challenge-11.js"></script>
+	</body>
+</html>

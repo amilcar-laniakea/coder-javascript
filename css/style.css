@@ -49,7 +49,7 @@
 }
 
 .api-global-container {
-	width: 100%;
+	width: 25%;
 	max-width: 25%;
 }
 
@@ -82,4 +82,28 @@
 .api-image {
 	position: relative;
 	width: 100%;
+}
+
+#productExampleList ul {
+	row-gap: 0px;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+#productExampleList ul li {
+	display: block;
+	flex: 0 0 25%;
+	max-width: 25%;
+}
+
+.item-product-list {
+	margin: 5px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 5px;
+}
+
+.item-product-list-image {
+	width: 100%;
+	height: auto;
 }
